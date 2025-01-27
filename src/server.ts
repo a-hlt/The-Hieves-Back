@@ -1,7 +1,7 @@
 import express from "express";
 import { createServer } from "http";
 import { Server } from "socket.io";
-import routes from "./routes/index";
+import routes from "./routes/router.js";
 
 const app = express();
 const httpServer = createServer(app);
