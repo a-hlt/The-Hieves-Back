@@ -1,6 +1,4 @@
-import { Request, Response, NextFunction } from "express";
-
-export const chatController = (req: Request, res: Response,) =>  {
+const chatController = (req, res) => {
   const { message } = req.body;
 
   if (!message) {
@@ -10,4 +8,4 @@ export const chatController = (req: Request, res: Response,) =>  {
   return res.status(200).json({ message: `Message received: ${message}` });
 };
 
-  
+module.exports = { chatController };

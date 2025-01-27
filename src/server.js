@@ -1,7 +1,7 @@
-import express from "express";
-import { createServer } from "http";
-import { Server } from "socket.io";
-import routes from "./routes/router.js";
+const express = require("express");
+const { createServer } = require("http");
+const { Server } = require("socket.io");
+const routes = require("./routes/index");
 
 const app = express();
 const httpServer = createServer(app);
@@ -15,7 +15,7 @@ io.on("connection", (socket) => {
 
   socket.on("message", (data) => {
     console.log("Message received:", data);
-    io.emit("message", data); // Broadcast message to all clients
+    io.emit("message", data);
   });
 
   socket.on("disconnect", () => {
