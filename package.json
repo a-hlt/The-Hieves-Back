@@ -1,0 +1,23 @@
+{
+  "name": "the-hieves-back",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a-hlt/The-Hieves-Back.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/a-hlt/The-Hieves-Back/issues"
+  },
+  "homepage": "https://github.com/a-hlt/The-Hieves-Back#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2",
+    "prisma": "^6.2.1"
+  }
+}
