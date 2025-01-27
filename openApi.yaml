@@ -1,0 +1,109 @@
+openapi: 3.1.0
+info:
+  title: The Hives API
+  description: it a api of the hives catastrophes
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:3000/v1/'
+    description: Local server
+paths:
+  /users/create:
+    post:
+      summary: Create a new user
+      tags:
+        - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                lastname:
+                  type: string
+                  example: "test"
+                firsname:
+                  type: string
+                  example: "test"
+                is_admin:
+                  type: boolean
+                  example: true
+                email:
+                  type: string
+                  example: "test1@test.com"
+                password:
+                  type: integer
+                  example: "Viol1418."
+      responses:
+        '201':
+          description: User created
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+  /users/user:
+    post:
+      summary: Get user by uuid
+      tags:
+        - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                uuid:
+                  type: string
+                  example: "d290f1ee-6c54-4b01-90e6-d701748f0851"
+      responses:
+        '200':
+          description: user found
+        '400':
+          description: Bad request
+        '500':
+            description: Internal server error
+  /update:
+    put:
+      summary: Update a user
+      tags:
+        - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                uuid:
+                  type: string
+                  example: "d290f1ee-6c54-4b01-90e6-d701748f0851"
+      responses:
+        200:
+          description: User updated
+        400:
+            description: Bad request
+        500:
+          description: Internal server error
+  /delete:
+    delete:
+      summary: Delete a user
+      tags:
+        - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                uuid:
+                  type: string
+                  example: "d290f1ee-6c54-4b01-90e6-d701748f0851"
+      responses:
+        '200':
+          description: User deleted
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
