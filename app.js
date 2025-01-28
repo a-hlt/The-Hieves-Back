@@ -20,7 +20,7 @@ app.use(OpenApiValidator.middleware({
     ignoreUndocumented: true,
 }))
 
-app.use('/api/users', UserRouter);
+app.use('/api', UserRouter);
 
 app.use(errorHandler);
 
