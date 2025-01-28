@@ -1,19 +1,26 @@
-import app from './app.js'
-// import prisma from './db.js'
+import express from "express";
+import cors from "cors";
+import app from "express/lib/application.js";
+import usersRouter from "./routes/usersRouter.js";
+import eventsRouter from "./routes/eventsRouter.js";
 
-const PORT = process.env.PORT || 4000
 
-app.listen(PORT, () => {
-    console.log('Server is running on port ' + PORT );
-})
 
-// prisma.$connect().then(async () => {
-//     console.log('Connected to the database')
+app.use(express.json());
 
-//     app.listen(PORT, () => {
-//         console.log('Server is running on port 3000');
-//     })
+// Enable CORS for all requests
+app.use(cors());
 
-// }).catch((error) => {
-//     console.error(error)
-// })
+// Add a basic route
+const version = "/v1";
+app.use(version + "/users", usersRouter);
+app.use("/events", eventsRouter);
+
+
+// start server
+app.listen(3000, () => {
+    console.log('http://localhost:3000/');
+});
+
+
+
