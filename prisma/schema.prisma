@@ -1,8 +1,7 @@
 datasource db {
-  provider = "postgresql" // Type de base de données
-  url      = env("DATABASE_URL") // URL de connexion (extrait du fichier .env)
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
-
 generator client {
   provider = "prisma-client-js" // Génère Prisma Client pour Node.js
 }
