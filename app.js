@@ -6,8 +6,9 @@ import path from 'path'
 import 'dotenv/config'
 
 import UserRouter from './routes/usersRouter.js'
-import {errorHandler} from './middlewares/errorHandler.js'
-import eventRouter from './routes/eventsRouter.js';
+import { errorHandler } from './middlewares/errorHandler.js'
+import eventRoutes from './routes/eventsRouter.js';
+
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 
@@ -21,9 +22,10 @@ app.use(express.json())
 //     ignoreUndocumented: false,
 // }))
 
+app.use('/api/events', eventRoutes);
 app.use(express.json());
-app.use('/api/events', eventRouter);
 app.use('/api/users', UserRouter);
+
 
 app.use(errorHandler);
 

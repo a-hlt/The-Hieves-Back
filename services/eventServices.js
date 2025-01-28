@@ -46,14 +46,37 @@ export const importEventsFromCSV = async (filePath) => {
     });
 };
 
-export const getEventsZone = async (req, res) => {
-    res.status(200).json("OUI")
-    // try {
-    //     // const events = await prisma.event.findMany({ where: { id: 1 } }); // Récupère toutes les données de la table Event
-    //     res.status(200).json("TEST result",); // Envoie les données au client
-    // } catch (error) {
-    //     res.status(500).json({ error: "Erreur lors de la récupération des événements." });
-    // }
+
+// Service pour récupérer les événements par zone
+export const getEventsByZoneService = async (zone) => {
+    try {
+        // Recherche des événements correspondant à la zone
+        const events = await prisma.event.findMany({
+            where: {
+                quartier: zone, // Filtrer les événements par "quartier"
+            },
+            select: {
+                id: true,
+                temperature: true,
+                humidite: true,
+                force_moyenne_du_vecteur_de_vent: true,
+                force_du_vecteur_de_vent_max: true,
+                pluie_intensite_max: true,
+                date: true,
+                quartier: true,
+                sismicite: true,
+                concentration_gaz: true,
+                pluie_totale: true,
+                seisme: true,
+                inondation: true,
+            },
+        });
+
+        return events;
+    } catch (error) {
+        console.error('Erreur dans getEventsByZoneService:', error);
+        throw error; // Propager l'erreur pour qu'elle soit gérée par le contrôleur
+    }
 };
 
 export async function checkEventsForZones() {
