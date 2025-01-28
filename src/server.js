@@ -24,7 +24,7 @@ io.on("connection", (socket) => {
 		io.emit("message", { id: Date.now(), type: "user", text: data });
 		// Simuler une réponse automatique
 		setTimeout(() => {
-			socket.emit("message", {
+			io.emit("message", {
 				id: Date.now() + 1,
 				type: "bot",
 				text: "Alerte veuillez vous éloignez le plus possible des zones indiqués !  ",
