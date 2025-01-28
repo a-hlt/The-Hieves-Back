@@ -7,7 +7,6 @@ import 'dotenv/config'
 
 import UserRouter from './routes/usersRouter.js'
 import { errorHandler } from './middlewares/errorHandler.js'
-import eventRouter from './routes/eventRouter.js';
 import eventRoutes from './routes/eventsRouter.js';
 
 
@@ -25,7 +24,6 @@ app.use(express.json())
 
 app.use('/api/events', eventRoutes);
 app.use(express.json());
-app.use('/api/events', eventRouter);
 app.use('/api/users', UserRouter);
 
 
