@@ -1,15 +1,50 @@
-generator client {
-  provider = "prisma-client-js"
+datasource db {
+  provider = "postgresql" // Type de base de données
+  url      = env("DATABASE_URL") // URL de connexion (extrait du fichier .env)
 }
 
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+generator client {
+  provider = "prisma-client-js" // Génère Prisma Client pour Node.js
 }
+
 
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  createdAt DateTime @default(now())
+  uid       String   @id @default(cuid())       // Clé primaire générée automatiquement
+  firstName String                               // Prénom de l'utilisateur
+  lastName  String                               // Nom de l'utilisateur
+  email     String   @unique                    // Adresse email unique
+  password  String                               // Mot de passe haché
+  isAdmin   Boolean  @default(false)            // Défaut à false
+  
+  createdAt DateTime @default(now())            // Date de création
+  updatedAt DateTime @updatedAt                 // Mise à jour automatique
+
+  // Relation avec les messages
+  messages  Message[]                           // Un utilisateur peut avoir plusieurs messages
 }
+
+model Message {
+  id        Int      @id @default(autoincrement()) // Identifiant unique
+  content   String                                 // Contenu du message
+  senderId  String                                 // Identifiant de l'utilisateur qui envoie le message
+  sender    User     @relation(fields: [senderId], references: [uid]) // Relation avec la table User
+  createdAt DateTime @default(now())               // Date et heure d'envoi du message
+}
+
+
+model Event {
+  id                           Int      @id @default(autoincrement())
+  temperature                  Int
+  humidite                     Int
+  force_moyenne_du_vecteur_de_vent Int
+  force_du_vecteur_de_vent_max Int
+  pluie_intensite_max          Int
+  date                         DateTime
+  quartier                     String
+  sismicite                    Int
+  concentration_gaz            Int
+  pluie_totale                 Int
+  seisme                       Boolean
+  inondation                   Boolean
+}
+
