@@ -1,0 +1,11 @@
+model User {
+  uid       String   @id @default(cuid())         // Clé primaire (génère un identifiant unique)
+  firstName String   @db.VarChar(100)             // Limitation à 100 caractères
+  lastName  String   @db.VarChar(100)             // Limitation à 100 caractères
+  email     String   @unique                      // Adresse e-mail unique
+  password  String   @db.VarChar(255)             // Mot de passe haché
+  isAdmin   Boolean  @default(false)              // Défaut à false
+
+  createdAt DateTime @default(now())              // Date de création (timestamp automatique)
+  updatedAt DateTime @updatedAt                   // Mise à jour automatique
+}
