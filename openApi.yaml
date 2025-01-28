@@ -33,7 +33,7 @@ paths:
                   example: "test1@test.com"
                 password:
                   type: integer
-                  example: "Viol1418."
+                  example: "baladeenforêt"
       responses:
         '201':
           description: User created
