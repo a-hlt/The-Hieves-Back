@@ -1,4 +1,4 @@
-const chatController = (req, res) => {
+export const chatController = async (req, res) => {
   const { message } = req.body;
 
   if (!message) {
@@ -7,5 +7,3 @@ const chatController = (req, res) => {
 
   return res.status(200).json({ message: `Message received: ${message}` });
 };
-
-module.exports = { chatController };

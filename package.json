@@ -2,17 +2,27 @@
   "name": "the-hieves-back",
   "version": "1.0.0",
   "scripts": {
-    "dev": "nodemon src/server.js",
-    "start": "node src/server.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "@prisma/client": "^6.2.1",
+>>>>>>> 9fa3a92e60dfe1f431e9d6ca1eb6fa36f1fc98d2
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "http": "^0.0.1-security",
+    "csv-parser": "^3.1.0",
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9",
     "prisma": "^6.2.1",
+    "dotenv": "^16.4.7",
+    "express-openapi-validator": "^5.4.2",
+    "http": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.2",
     "socket.io": "^4.8.1"
   },
+  "type": "module",
   "devDependencies": {
     "nodemon": "^3.0.1"
   }
