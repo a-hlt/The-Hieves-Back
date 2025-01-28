@@ -1,3 +1,13 @@
+datasource db {
+  provider = "postgresql" // Type de base de données
+  url      = env("DATABASE_URL") // URL de connexion (extrait du fichier .env)
+}
+
+generator client {
+  provider = "prisma-client-js" // Génère Prisma Client pour Node.js
+}
+
+
 model User {
   uid       String   @id @default(cuid())       // Clé primaire générée automatiquement
   firstName String                               // Prénom de l'utilisateur
