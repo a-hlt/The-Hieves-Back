@@ -1,5 +1,4 @@
-import { getAll, getById, deleteById, create, update, login } from '../services/usersService.js';
-
+import { create, getAll, getById, deleteById, update, login } from '../services/usersServices.js';
 
 export const getUsers = async (req, res, next) => {
     try {

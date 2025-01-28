@@ -1,7 +1,12 @@
 import * as eventService from "../services/eventServices.js";
 import { Prisma } from "@prisma/client";
+import * as eventService from "../services/eventServices.js";
+
 import { getEventsByZoneService } from '../services/eventServices.js';
 
+// import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 export const importEventsController = async (req, res) => {
     try {
@@ -16,6 +21,7 @@ export const importEventsController = async (req, res) => {
         res.status(500).json({ error: "Erreur lors de l'importation des événements." });
     }
 };
+
 
 export const getEventsByZone = async (req, res, next) => {
     try {
@@ -47,3 +53,7 @@ export const getEventsByZone = async (req, res, next) => {
         next(error);
     }
 };
+
+
+
+export { checkEventsForZones };
