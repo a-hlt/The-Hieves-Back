@@ -7,7 +7,7 @@ import 'dotenv/config'
 
 import UserRouter from './routes/usersRouter.js'
 import {errorHandler} from './middlewares/errorHandler.js'
-import eventRouter from './routes/eventRouter.js';
+import eventRouter from './routes/eventsRouter.js';
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 
