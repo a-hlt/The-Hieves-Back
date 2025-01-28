@@ -1,8 +1,8 @@
 import express from "express";
-import { getAllEvents } from "../controllers/eventController.js";
+import { getEventsZone } from "../services/eventServices.js";
 
 const router = express.Router();
 
-router.get("/events", getAllEvents);
+router.get("/eventsByZone", getEventsZone);
 
 export default router;

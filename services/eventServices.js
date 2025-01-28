@@ -1,12 +1,9 @@
-import prisma from "prisma";
-
+import { PrismaClient } from "@prisma/client"; // Import correct de Prisma
 import fs from "fs";
 import csv from "csv-parser";
-import prisma from "prisma";
+import path from "path";
 
-const path = require('path');
-
-const filePath = path.join(__dirname, 'data/csv/fichier_modifie.csv');
+const prisma = new PrismaClient(); // Initialisation de Prisma
 
 export const importEventsFromCSV = async (filePath) => {
     const events = [];
@@ -15,7 +12,6 @@ export const importEventsFromCSV = async (filePath) => {
         fs.createReadStream(filePath)
             .pipe(csv())
             .on("data", (row) => {
-                // Transformer les données du CSV en objets adaptés au modèle Prisma
                 events.push({
                     temperature: parseInt(row.temperature, 10),
                     humidite: parseInt(row.humidite, 10),
@@ -33,7 +29,6 @@ export const importEventsFromCSV = async (filePath) => {
             })
             .on("end", async () => {
                 try {
-                    // Insertion en lot dans la table `Event`
                     await prisma.event.createMany({
                         data: events,
                     });
@@ -51,12 +46,13 @@ export const importEventsFromCSV = async (filePath) => {
     });
 };
 
-export const getAllEvents = async (req, res) => {
-    try {
-        const events = await prisma.event.findMany(); // Récupère toutes les données de la table Event
-        res.status(200).json(events); // Envoie les données au client
-    } catch (error) {
-        res.status(500).json({ error: "Erreur lors de la récupération des événements." });
-    }
+export const getEventsZone = async (req, res) => {
+    res.status(200).json("OUI")
+    // try {
+    //     // const events = await prisma.event.findMany({ where: { id: 1 } }); // Récupère toutes les données de la table Event
+    //     res.status(200).json("TEST result",); // Envoie les données au client
+    // } catch (error) {
+    //     res.status(500).json({ error: "Erreur lors de la récupération des événements." });
+    // }
 };
 
