@@ -6,10 +6,7 @@
     "start": "node server.js"
   },
   "dependencies": {
-<<<<<<< HEAD
-=======
     "@prisma/client": "^6.2.1",
->>>>>>> 9fa3a92e60dfe1f431e9d6ca1eb6fa36f1fc98d2
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "csv-parser": "^3.1.0",

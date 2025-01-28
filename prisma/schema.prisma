@@ -7,8 +7,6 @@ generator client {
   provider = "prisma-client-js" // Génère Prisma Client pour Node.js
 }
 
-
-
 model User {
   uid       String   @id @default(cuid())       // Clé primaire générée automatiquement
   firstName String                               // Prénom de l'utilisateur
